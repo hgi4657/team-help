@@ -1,4 +1,3 @@
-// 1번
 document.addEventListener("DOMContentLoaded", function() {
     var cards = document.querySelectorAll('.card');
 
@@ -8,19 +7,24 @@ document.addEventListener("DOMContentLoaded", function() {
         var url;
         switch (name) {
             case '이지우':
-                url = '#';
+                url = 'jw.html'
+                location.replace('url')
                 break;
             case '권수연':
-                url = '#';
+                url = 'sy.html'
+                location.replace('url')
                 break;
             case '박민영':
-                url = '#';
+                url = 'my.html'
+                location.replace('url')
                 break;
             case '이현욱':
-                url = '#';
+                url = 'hw.html'
+                location.replace('url')
                 break;
             case '장경진':
-                url = '#';
+                url = 'kj.html'
+                location.replace('url')
                 break;
             default:
                 return;
@@ -31,19 +35,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // 각 카드에 클릭 이벤트 추가
     cards.forEach(function(card) {
         card.addEventListener('click', cardClickHandler);
-    });
-});
-
-// 2번
-document.addEventListener("DOMContentLoaded", function() {
-    var section = document.querySelector('section');
-
-    section.addEventListener('click', function(event) {
-        if (event.target.classList.contains('card')) {
-            var name = document.getElementById('JU').id
-            var url = '#' + name;
-
-            window.open(url, '_self');
-        }
     });
 });
