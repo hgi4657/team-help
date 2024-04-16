@@ -1,0 +1,45 @@
+.team_introduce{
+  font-family: 'ChosunGs';
+  font-weight: normal;
+}
+@keyframes layerize {
+  0% { color: #ffffff; }
+  20% { color: rgba(255, 0, 0, 0.8); }
+  100% { color: rgba(255, 0, 0, 0.8); }
+}
+
+h1 {
+  display: flex;
+  margin: 20px 0px;
+}
+
+.index_image { 
+  background-image: url("../img/index_image_help.jpg");
+  background-size: cover;
+  position: relative;
+  min-height: 300px;
+  transform: translateX(0%);
+  opacity: 0.8;
+  background-position: center bottom;
+}
+
+.team_name {
+  position: absolute;
+  color: white;  
+  font-size: 50px;
+  margin: 0px 50px;
+  text-shadow: 2px 3px 1px rgba(0, 111, 111, 0.486);
+  animation: layerize cubic-bezier(0.4, 0, 0.2, 1) 3600ms 200ms infinite alternate;
+}
+
+.team_intro_text {
+  color: white;
+  font-size: 20px;
+  margin: 0px 10px;
+}
+
+@media (max-width: 768px) {
+  .team_name {
+    min-height: 300px;
+  }
+}
