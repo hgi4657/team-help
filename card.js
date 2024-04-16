@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     section.addEventListener('click', function(event) {
         if (event.target.classList.contains('card')) {
             var name = document.getElementById('JU').id
-            var url = 'https://example.com/' + name;
+            var url = '#' + name;
 
             window.open(url, '_self');
         }
