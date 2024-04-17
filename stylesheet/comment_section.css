@@ -32,10 +32,15 @@
     border-radius: 5px;
 }
 
+.content {
+    background-color: aliceblue;
+} 
+
 .UDbtn {
-    width: 140px;
+    background-color: black;
+    display: inline-block;
+    float: right;
     position: relative;
-    left: 240px;
     top: 60px;
 }
 
