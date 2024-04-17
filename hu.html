@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homebutton</title>
+    <style>
+        .homebutton {
+            font: size 30px;
+        }
+
+
+
+
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        ul,
+        ol {
+            list-style: none
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px
+        }
+
+        nav {
+            width: 80%;
+            overflow: hidden;
+            height: 80px;
+            background-color: #5776f1;
+            margin: 50px auto
+        }
+
+        #nav1 {
+            text-align: center
+        }
+
+        #nav1>ul {
+            display: inline-block
+        }
+
+        #nav1>ul li {
+            float: left;
+            padding: 0 30px;
+            line-height: 80px
+        }
+
+        
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
+
+        @font-face {
+            font-family: 'NanumSquareNeo-Variable';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-header {
+            background-color: var(--bgcolor);
+            color: rgb(150, 168, 228);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 105px;
+            border-bottom: #7694e7 solid 1px;
+        }
+
+        .nav {
+            margin-right: 30px;
+            display: flex;
+            width: 400px;
+            justify-content: space-evenly;
+        }
+
+        .nav>a {
+            color: rgb(70, 108, 233);
+            padding: 1.5rem;
+            cursor: pointer;
+            font-family: 'NanumSquareNeo-Variable';
+        }
+
+        .nav>a:hover {
+            background-color: #FCF6F6;
+            opacity: 0.8;
+            color: #ffffff;
+        }
+
+        .Logo {
+            margin-top: 8px;
+        }
+
+        .Logo a.active {
+            background-color: #ffffff;
+            font-family: 'Kumar One', cursive;
+            font-size: 25px;
+            margin-left: 35px;
+        }
+
+        .menu-icon {
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <nav id="nav1">
+        <ul>
+
+
+            <li><a href="#">홈버튼</a></li>
+
+        </ul>
+    </nav>
+    <nav id="nav1">
+        <ul>
+
+            <li><a href="#">이지우</a></li>
+            <li><a href="#">권수연</a></li>
+            <li><a href="#">박민영</a></li>
+            <li><a href="#">이현욱</a></li>
+            <li><a href="#">장경진</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <a id="menu-icon" class="menu-icon" onclick="onMenuClick()">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <div id="navigation-bar" class="Logo">
+            <a class="active"> EWHADULE </a>
+        </div>
+        <div class="nav">
+            <a> 네1 </a>
+            <a> 네2 </a>
+            <a> 네3 </a>
+            <a> 네4 </a>
+            <a> 네5 </a>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
