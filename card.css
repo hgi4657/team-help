@@ -6,7 +6,7 @@
     min-width: 370px;
 }
 
-section {
+.card_section {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

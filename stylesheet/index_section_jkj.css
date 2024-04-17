@@ -8,7 +8,8 @@
   100% { color: rgba(255, 0, 0, 0.8); }
 }
 
-h1 {
+/* 부모 추가 */
+.team_name > h1 {
   display: flex;
   margin: 20px 0px;
 }

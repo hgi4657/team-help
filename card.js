@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var cards = document.querySelectorAll('.card');
+    const cards = document.querySelectorAll('.card');
 
     function cardClickHandler(event) {
-        var name = event.currentTarget.querySelector('.name').innerText;
+        const name = event.currentTarget.querySelector('.name').innerText;
 
-        var url;
+        let url;
         switch (name) {
             case '이지우':
                 url = 'jw.html'
@@ -37,3 +37,11 @@ document.addEventListener("DOMContentLoaded", function() {
         card.addEventListener('click', cardClickHandler);
     });
 });
+
+// // 팀 소개 페이지 이동
+// document.addEventListener("DOMContentLoaded", function() {
+//     const team_img = document.getElementById('team_box')
+//     team_img.addEventListener("click", function() {
+//         // location.href = "suyeon.html" >>> 팀소개 html로 변경
+//     })
+// })
