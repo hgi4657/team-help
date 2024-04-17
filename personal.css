@@ -1,3 +1,7 @@
+body {
+    background-color: #EAEAEA;
+}
+
 nav {
     background-color: grey;
     height: 100px;
@@ -25,19 +29,19 @@ nav {
 #img img {
     width: 450%;
     height: auto;
+    border-radius: 10px;
 }
 
 #info {
     display: flex;
     flex-direction: column;
     padding-top: 52%;
-    padding-right: 10%;
 }
 
 #info span {
-    background-color: beige;
+    background-color: #CCE2EB;
     width: 330px;
-    border: 2px solid black;
+    border: 2px solid #344952;
     border-radius: 5px;
     font-size: 20px;
     padding: 10px;
@@ -64,10 +68,10 @@ nav {
 }
 
 #info2 span {
-    background-color: aliceblue;
+    background-color: #CCE2EB;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #ccc;
+    border: 2px solid #344952;
     border-radius: 5px;
     margin-bottom: 30px;
     display: block;
@@ -75,5 +79,5 @@ nav {
 }
 
 #q {
-    color: navy;
+    color: #1A6EEB;
 }
