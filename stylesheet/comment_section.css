@@ -1,0 +1,27 @@
+.mycommentgbox {
+  width: 500px;
+  margin: 30px auto 0px auto;
+  padding: 20px;
+  box-shadow: 0px 0px 3px 0px;
+  border-radius: 5px;
+}
+
+.mybtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment_box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.box {
+  width: 23%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: green;
+}
