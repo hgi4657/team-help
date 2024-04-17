@@ -14,6 +14,9 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <script type="module">
+
+    $("#commentgbox").hide();
+
     $("#btn_editor").click(async function () {
       $("#commentgbox").toggle();
     });
@@ -36,22 +39,42 @@
     <div class="box">
       <div class="nickname">닉네임1</div>
       <div class="content">내용1</div>
+      <div class="UDbtn">
+        <button id="modibtn" type="button" class="btn" style="background-color:#FFD5C2;">수정</button>
+        <button id="delbtn" type="button" class="btn" style="background-color: rgb(221, 221, 221);">삭제</button>
+      </div>
     </div>
     <div class="box">
       <div class="nickname">닉네임2</div>
       <div class="content">내용2</div>
+      <div class="UDbtn">
+        <button id="modibtn" type="button" class="btn" style="background-color:#FFD5C2;">수정</button>
+        <button id="delbtn" type="button" class="btn" style="background-color: rgb(221, 221, 221);">삭제</button>
+      </div>
     </div>
     <div class="box">
       <div class="nickname">닉네임3</div>
       <div class="content">내용3</div>
+      <div class="UDbtn">
+        <button id="modibtn" type="button" class="btn" style="background-color:#FFD5C2;">수정</button>
+        <button id="delbtn" type="button" class="btn" style="background-color: rgb(221, 221, 221);">삭제</button>
+      </div>
     </div>
     <div class="box">
       <div class="nickname">닉네임4</div>
       <div class="content">내용4</div>
+      <div class="UDbtn">
+        <button id="modibtn" type="button" class="btn" style="background-color:#FFD5C2;">수정</button>
+        <button id="delbtn" type="button" class="btn" style="background-color: rgb(221, 221, 221);">삭제</button>
+      </div>
     </div>
     <div class="box">
       <div class="nickname">닉네임5</div>
       <div class="content">내용5</div>
+      <div class="UDbtn">
+        <button id="modibtn" type="button" class="btn" style="background-color:#FFD5C2;">수정</button>
+        <button id="delbtn" type="button" class="btn" style="background-color: rgb(221, 221, 221);">삭제</button>
+      </div>
     </div>
     <!-- 이하 생략 -->
   </div>
@@ -66,7 +89,7 @@
       <label for="floatingInput">내용 : </label>
     </div>
 
-    <div class="mybtn">
+    <div class="inputbtn">
       <button id="commentingbtn" type="button" class="btn" style="background-color:#FFD5C2;">입력</button>
       <button type="button" class="btn" style="background-color: rgb(194, 191, 191);">취소</button>
     </div>
@@ -74,7 +97,7 @@
  
   <div class ="commentinput">
     <div class="editor">
-      <h6>여기를 눌러 방명록을 작성하세요 👉</h6> <a id="btn_editor"> <i class="fa-regular fa-pen-to-square"></i></a>
+      <h6 style="margin-top: 40px;">여기를 눌러 방명록을 작성하세요 👉</h6> <a id="btn_editor"> <i class="fa-regular fa-pen-to-square fa-4x"></i></a>
     </div>
   </div>
 
