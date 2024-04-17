@@ -1,29 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll('.card');
 
-    function cardClickHandler(event) {
+    function cardPage(event) {
         const name = event.currentTarget.querySelector('.name').innerText;
 
         let url;
         switch (name) {
             case '이지우':
-                url = 'jw.html'
+                url = 'personal/jw.html'
                 location.replace('url')
                 break;
             case '권수연':
-                url = 'sy.html'
+                url = 'personal/sy.html'
                 location.replace('url')
                 break;
             case '박민영':
-                url = 'my.html'
+                url = 'personal/my.html'
                 location.replace('url')
                 break;
             case '이현욱':
-                url = 'hw.html'
+                url = 'personal/hw.html'
                 location.replace('url')
                 break;
             case '장경진':
-                url = 'kj.html'
+                url = 'personal/kj.html'
                 location.replace('url')
                 break;
             default:
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 각 카드에 클릭 이벤트 추가
     cards.forEach(function(card) {
-        card.addEventListener('click', cardClickHandler);
+        card.addEventListener('click', cardPage);
     });
 });
 
