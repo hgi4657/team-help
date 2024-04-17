@@ -10,9 +10,6 @@
             font: size 30px;
         }
 
-
-
-
         * {
             padding: 0;
             margin: 0
@@ -50,9 +47,6 @@
             padding: 0 30px;
             line-height: 80px
         }
-
-        
-
 
         @import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
 
@@ -121,33 +115,22 @@
             cursor: pointer;
             display: none;
         }
+
+        #navigation-bar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        #navigation-bar li {
+            margin-right: 50px;
+        }
     </style>
     <script src="https://kit.fontawesome.com/49be96d31f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-
-
-    <nav id="nav1">
-        <ul>
-
-
-            <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-
-        </ul>
-    </nav>
-    <nav id="nav1">
-        <ul>
-
-            <li><a href="#">이지우</a></li>
-            <li><a href="#">권수연</a></li>
-            <li><a href="#">박민영</a></li>
-            <li><a href="#">이현욱</a></li>
-            <li><a href="#">장경진</a></li>
-            
-        </ul>
-    </nav>
 
     <div class="page-header">
         <a id="menu-icon" class="menu-icon" onclick="onMenuClick()">
@@ -155,7 +138,8 @@
         </a>
 
         <div id="navigation-bar" class="Logo">
-            <a class="active"> <i class="fa-solid fa-house"></i> </a>
+            <li><a class="active"> <i class="fa-solid fa-house"></i></a></li>
+            <li>방명록</li>
         </div>
         <div class="nav">
             <a>이지우</a>
@@ -164,11 +148,11 @@
             <a>이현욱</a>
             <a>장경진</a>
         </div>
-        
-        </div>
+
+    </div>
     </div>
 
-    
+
 
 
 
