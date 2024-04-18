@@ -1,21 +1,20 @@
-.homebutton {
-    font: size 30px;
-}
 
 * {
     padding: 0;
     margin: 0
 }
 
-ul,
-ol {
-    list-style: none
-}
-
 a {
     text-decoration: none;
-    color: #fff;
     font-size: 15px
+}
+
+a:link {
+    color :#5776f1;
+}
+
+a:visited {
+    color :#5776f1;
 }
 
 nav {
@@ -25,21 +24,6 @@ nav {
     background-color: #5776f1;
     margin: 50px auto
 }
-
-#nav1 {
-    text-align: center
-}
-
-#nav1>ul {
-    display: inline-block
-}
-
-#nav1>ul li {
-    float: left;
-    padding: 0 30px;
-    line-height: 80px
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
 
 @font-face {
@@ -47,15 +31,6 @@ nav {
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-}
-
-body {
-    background-color: #ffffff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 .page-header {
@@ -77,16 +52,14 @@ body {
 }
 
 .nav>a {
-    color: rgb(83, 33, 58);
+    color: rgb(150, 168, 228);
     padding: 3px;
     cursor: pointer;
     font-family: 'NanumSquareNeo-Variable';
 }
 
 .nav>a:hover {
-    background-color: #FCF6F6;
     opacity: 0.8;
-    color: #ffffff;
 }
 
 .Logo {
