@@ -43,13 +43,13 @@
       // Firebase 인스턴스 초기화
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-<<<<<<< HEAD
       let backColor
       let today = new Date();
 
       $('#sav').click(async function () {
        const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
        backColor = color_list[Math.floor(Math.random() * color_list.length)];
+
        let name = $('#inp_name').val();
        let text = $('#inp_txt').val();
        const doc = await addDoc(collection(db, "comments"), {
@@ -57,15 +57,20 @@
          'text': text,
          'backColor':backColor,
          'today':today
+         
        });
       });
+
       let docs = await getDocs(collection(db, "comments"));
+
       docs.forEach((doc) => {
           let row = doc.data();
           let name = row['name']
           let text = row['text']
           let backColor = row['backColor']
           let today = row['today']
+          
+
           let temp_html = `<div class="box" style="background-color: ${backColor};">
       <div class="nickname">${name}</div>
       <div class="content">${text}</div>
@@ -74,19 +79,7 @@
       </div>`;
           $('#text_container').append(temp_html);
       });
-      
-=======
 
-      $("#sav").click(async function () {
-        let name = $('#inp_name').val();
-        let text = $('#inp_txt').val();
-        const doc = await addDoc(collection(db, "comments"), {
-          'name': name,
-          'text': text
-        });
-        window.location.reload()
-      })
->>>>>>> parent of c421849 (fb 완료)
     </script>
   <script src="./comment_section.js" defer></script>
 </head>
@@ -116,7 +109,7 @@
     </div>
     <div class="titlebox">
       <div>
-        <h2 class="title">살려조 방명록:연필2:</h2>
+        <h2 class="title">살려조 방명록✏️</h2>
       </div>
       <div class="subtitle">
         <h4>반갑습니다 한마디씩 남겨주세요!</h4>
@@ -139,11 +132,6 @@
           id="sav"
           type="button"
           class="btn"
-<<<<<<< HEAD
-          style="background-color: #FFD5C2"
-=======
-          style="background-color: #ffd5c2"
->>>>>>> parent of c421849 (fb 완료)
         >
           입력
         </button>
@@ -159,7 +147,7 @@
     </div>
     <div class="commentinput">
       <div class="editor">
-        <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 :오른쪽을_가리키는_손_모양:</h6>
+        <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 👉</h6>
         <a id="btn_editor" class="new_comment">
           <i class="fa-regular fa-pen-to-square fa-4x"></i
         ></a>
