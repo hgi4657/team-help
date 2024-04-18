@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (check === true) {
                 // 댓글을 컨테이너에 추가
                 addComment(name, text);
-                writeData(name, text)
+
+                
 
                 // 입력 필드 지우기
                 document.getElementById('inp_name').value = '';
