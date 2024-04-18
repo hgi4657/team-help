@@ -1,12 +1,9 @@
 $("#commentgbox").hide();
-
 $("#btn_editor").click(async function () {
     $("#commentgbox").toggle();
 });
-
 // 새로운 div를 생성
 const newComment = document.createElement('div');
-
 // 배경에 랜덤 색상을 선택되는 함수
 function randomColor() {
     const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
@@ -17,7 +14,6 @@ let today = new Date();
 function addComment(name, text) {
     // 랜덤배경저장
     const backColor = randomColor();
-
     // 댓글 뻐대
     const commentHtml =
         `<div class="box" style="background-color: ${backColor};">
@@ -26,10 +22,8 @@ function addComment(name, text) {
       <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
       <div hidden>${today}</div>
       </div>`;
-
     // 새로 만든 div에 댓글 뼈대 넣기
     newComment.innerHTML = commentHtml
-
     // 댓글 컨테이너에서 자식이 있으면 그 위에 올리기
     const textContainer = document.getElementById('text_container');
     const firstChild = textContainer.firstChild;
@@ -39,16 +33,12 @@ function addComment(name, text) {
         textContainer.appendChild(newComment.firstChild);
     }
 }
-
 // 삭제 버튼 기능
 function delComment() {
     const dels = document.querySelectorAll('.del')
-
     dels.forEach(function (del) {
         del.addEventListener('click', () => {
-
             let del_check = confirm('정말 삭제하시겠습니까?')
-
             if (del_check === true) {
                 // 가장 가까운 상위 요소 찾기
                 const commetBox = del.closest('.box')
@@ -61,15 +51,12 @@ function delComment() {
         })
     })
 }
-
 // 등록 버튼 클릭 시 실행
 document.addEventListener('DOMContentLoaded', function () {
-
     document.getElementById('sav').addEventListener('click', () => {
         // 입력 값 가져오기
         const name = document.getElementById('inp_name').value;
         const text = document.getElementById('inp_txt').value;
-
         // 내용 입력 확인
         if (name == '' && text == '') {
             alert("닉네임과 내용은 필수입니다")
@@ -82,27 +69,27 @@ document.addEventListener('DOMContentLoaded', function () {
             if (check === true) {
                 // 댓글을 컨테이너에 추가
                 addComment(name, text);
-
-                
-
                 // 입력 필드 지우기
                 document.getElementById('inp_name').value = '';
                 document.getElementById('inp_txt').value = '';
-
                 // 삭제 버튼 기능 호출
                 delComment()
-
             } else {
                 return
             }
         }
     });
-
 })
-
 // 입력 취소 버튼
 document.getElementById('cancell').addEventListener('click', () => {
     document.getElementById('inp_name').value = '';
     document.getElementById('inp_txt').value = '';
     $("#commentgbox").hide();
 })
+
+
+
+
+
+
+

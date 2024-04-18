@@ -20,7 +20,6 @@
       src="https://kit.fontawesome.com/49be96d31f.js"
       crossorigin="anonymous"
     ></script>
-
     <link rel="stylesheet" href="./stylesheet/nav.css" />
     <script type="module">
       // Firebase SDK 라이브러리 가져오기
@@ -31,7 +30,6 @@
         addDoc,
       } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
       import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
       // Firebase 구성 정보 설정
       const firebaseConfig = {
         apiKey: "AIzaSyBCQnr4yIn-M8nJVTlLocbN8KIvFoMrzWQ",
@@ -42,20 +40,15 @@
         appId: "1:488622332237:web:0adf9af9c955e644263f04",
         measurementId: "G-1KMBNSPH2M",
       };
-
       // Firebase 인스턴스 초기화
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       let backColor
       let today = new Date();
 
-
-      
-
       $('#sav').click(async function () {
        const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
        backColor = color_list[Math.floor(Math.random() * color_list.length)];
-
        let name = $('#inp_name').val();
        let text = $('#inp_txt').val();
        const doc = await addDoc(collection(db, "comments"), {
@@ -63,20 +56,15 @@
          'text': text,
          'backColor':backColor,
          'today':today
-         
        });
       });
-
       let docs = await getDocs(collection(db, "comments"));
-
       docs.forEach((doc) => {
           let row = doc.data();
           let name = row['name']
           let text = row['text']
           let backColor = row['backColor']
           let today = row['today']
-          
-
           let temp_html = `<div class="box" style="background-color: ${backColor};">
       <div class="nickname">${name}</div>
       <div class="content">${text}</div>
@@ -86,18 +74,14 @@
           $('#text_container').append(temp_html);
       });
       
-
     </script>
-
   <script src="./comment_section.js" defer></script>
 </head>
-
   <body style="background-color: #EAEAEA">
     <div class="page-header">
       <a id="menu-icon" class="menu-icon">
         <i class="fa fa-bars"></i>
       </a>
-
       <div id="navigation-bar" class="Logo">
         <li>
           <a href="./index.html" class="active">
@@ -109,7 +93,6 @@
           <a href="./team_section.html">팀소개</a>
         </div>
       </div>
-
       <div class="nav">
         <a href="./personal/jw.html">이지우</a>
         <a href="./personal/sy.html">권수연</a>
@@ -118,20 +101,17 @@
         <a href="./personal/kj.html">장경진</a>
       </div>
     </div>
-
     <div class="titlebox">
       <div>
-        <h2 class="title">살려조 방명록✏️</h2>
+        <h2 class="title">살려조 방명록:연필2:</h2>
       </div>
       <div class="subtitle">
         <h4>반갑습니다 한마디씩 남겨주세요!</h4>
       </div>
     </div>
-
     <div id="text_container" class="comment_box">
       <!-- 이하 생략 -->
     </div>
-
     <div class="mycommentgbox" id="commentgbox">
       <div class="form-floating">
         <input type="name" class="form-control" id="inp_name" />
@@ -141,14 +121,12 @@
         <input type="text" class="form-control" id="inp_txt" />
         <label for="floatingInput">내용 : </label>
       </div>
-
       <div class="inputbtn">
         <button
           id="sav"
           type="button"
           class="btn"
-          style="background-color: #ffd5c2"
-          
+          style="background-color: #FFD5C2"
         >
           입력
         </button>
@@ -162,10 +140,9 @@
         </button>
       </div>
     </div>
-
     <div class="commentinput">
       <div class="editor">
-        <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 👉</h6>
+        <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 :오른쪽을_가리키는_손_모양:</h6>
         <a id="btn_editor" class="new_comment">
           <i class="fa-regular fa-pen-to-square fa-4x"></i
         ></a>
