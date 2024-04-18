@@ -10,8 +10,8 @@
 }
 @keyframes layerize {
   0% { color: #ffffff; }
-  20% { color: rgba(255, 0, 0, 0.8); }
-  100% { color: rgba(255, 0, 0, 0.8); }
+  20% { color: rgb(140, 179, 252); }
+  100% { color: rgb(97, 150, 249); }
 }
 
 /* 부모 추가 */
