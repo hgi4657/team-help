@@ -1,150 +1,146 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>살려조 방명록</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="./stylesheet/comment_section.css" />
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <!-- 아이콘 -->
-    <script
-      src="https://kit.fontawesome.com/49be96d31f.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="./stylesheet/nav.css" />
-    <script type="module">
-      // Firebase SDK 라이브러리 가져오기
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import {
-        collection,
-        addDoc,
-      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      // Firebase 구성 정보 설정
-      const firebaseConfig = {
-        apiKey: "AIzaSyBCQnr4yIn-M8nJVTlLocbN8KIvFoMrzWQ",
-        authDomain: "team-help-783b6.firebaseapp.com",
-        projectId: "team-help-783b6",
-        storageBucket: "team-help-783b6.appspot.com",
-        messagingSenderId: "488622332237",
-        appId: "1:488622332237:web:0adf9af9c955e644263f04",
-        measurementId: "G-1KMBNSPH2M",
-      };
-      // Firebase 인스턴스 초기화
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-      let backColor
-      let today = new Date();
-      $('#sav').click(async function () {
-       const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
-       backColor = color_list[Math.floor(Math.random() * color_list.length)];
-       let name = $('#inp_name').val();
-       let text = $('#inp_txt').val();
-       const doc = await addDoc(collection(db, "comments"), {
-         'name': name,
-         'text': text,
-         'backColor':backColor,
-         'today':today
-       });
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>살려조 방명록</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./stylesheet/comment_section.css" />
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- 아이콘 -->
+  <script src="https://kit.fontawesome.com/49be96d31f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./stylesheet/nav.css" />
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    // Firebase 구성 정보 설정
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCQnr4yIn-M8nJVTlLocbN8KIvFoMrzWQ",
+      authDomain: "team-help-783b6.firebaseapp.com",
+      projectId: "team-help-783b6",
+      storageBucket: "team-help-783b6.appspot.com",
+      messagingSenderId: "488622332237",
+      appId: "1:488622332237:web:0adf9af9c955e644263f04",
+      measurementId: "G-1KMBNSPH2M",
+    };
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let backColor
+
+    //날짜 정보 가져오기
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+    let hour = today.getHours();
+    let minutes = today.getMinutes();
+    let seconds = today.getSeconds();
+
+    // id 날짜 정보 
+    let date_id = `${year}${(("00" + month.toString()).slice(-2))}${(("00" + date.toString()).slice(-2))}${hour}${minutes}${seconds}`;
+
+    $('#sav').click(async function () {
+      const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
+      backColor = color_list[Math.floor(Math.random() * color_list.length)];
+      let name = $('#inp_name').val();
+      let text = $('#inp_txt').val();
+
+      await setDoc(doc(db, "comments", "id" +date_id), {
+        name: name,
+        text: text,
+        backColor: backColor,
+        today: today
       });
-      let docs = await getDocs(collection(db, "comments"));
-      docs.forEach((doc) => {
-          let row = doc.data();
-          let name = row['name']
-          let text = row['text']
-          let backColor = row['backColor']
-          let today = row['today']
-          let temp_html = `<div class="box" style="background-color: ${backColor};">
+
+    let docs = await getDocs(collection(db, "comments"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      let name = row['name']
+      let text = row['text']
+      let backColor = row['backColor']
+      let today = row['today']
+      let temp_html = `<div class="box" style="background-color: ${backColor};">
       <div class="nickname">${name}</div>
       <div class="content">${text}</div>
       <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
       <div hidden>${today}</div>
       </div>`;
-          $('#text_container').append(temp_html);
-      });
-    </script>
+      $('#text_container').append(temp_html);
+    });
+
+  });
+  </script>
   <script src="./comment_section.js" defer></script>
 </head>
-  <body style="background-color: #EAEAEA">
-    <div class="page-header">
-      <a id="menu-icon" class="menu-icon">
-        <i class="fa fa-bars"></i>
-      </a>
-      <div id="navigation-bar" class="Logo">
-        <li>
-          <a href="./index.html" class="active">
-            <i class="fa-solid fa-house"></i
-          ></a>
-        </li>
-        <div id="left_btn">
-          <a href="./comment_section_jkj.html">방명록</a>
-          <a href="./team_section.html">팀소개</a>
-        </div>
-      </div>
-      <div class="nav">
-        <a href="./personal/jw.html">이지우</a>
-        <a href="./personal/sy.html">권수연</a>
-        <a href="./personal/my.html">박민영</a>
-        <a href="./personal/hw.html">이현욱</a>
-        <a href="./personal/kj.html">장경진</a>
+
+<body style="background-color: #EAEAEA">
+  <div class="page-header">
+    <a id="menu-icon" class="menu-icon">
+      <i class="fa fa-bars"></i>
+    </a>
+    <div id="navigation-bar" class="Logo">
+      <li>
+        <a href="./index.html" class="active">
+          <i class="fa-solid fa-house"></i></a>
+      </li>
+      <div id="left_btn">
+        <a href="./comment_section_jkj.html">방명록</a>
+        <a href="./team_section.html">팀소개</a>
       </div>
     </div>
-    <div class="titlebox">
-      <div>
-        <h2 class="title">살려조 방명록:연필2:</h2>
-      </div>
-      <div class="subtitle">
-        <h4>반갑습니다 한마디씩 남겨주세요!</h4>
-      </div>
+    <div class="nav">
+      <a href="./personal/jw.html">이지우</a>
+      <a href="./personal/sy.html">권수연</a>
+      <a href="./personal/my.html">박민영</a>
+      <a href="./personal/hw.html">이현욱</a>
+      <a href="./personal/kj.html">장경진</a>
     </div>
-    <div id="text_container" class="comment_box">
-      <!-- 이하 생략 -->
+  </div>
+  <div class="titlebox">
+    <div>
+      <h2 class="title">살려조 방명록:연필2:</h2>
     </div>
-    <div class="mycommentgbox" id="commentgbox">
-      <div class="form-floating">
-        <input type="name" class="form-control" id="inp_name" />
-        <label for="floatingInput">닉네임 :</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="inp_txt" />
-        <label for="floatingInput">내용 : </label>
-      </div>
-      <div class="inputbtn">
-        <button
-          id="sav"
-          type="button"
-          class="btn"
-          style="background-color: #FFD5C2"
-        >
-          입력
-        </button>
-        <button
-          type="button"
-          id="cancell"
-          class="btn"
-          style="background-color: rgb(194, 191, 191)"
-        >
-          취소
-        </button>
-      </div>
+    <div class="subtitle">
+      <h4>반갑습니다 한마디씩 남겨주세요!</h4>
     </div>
-    <div class="commentinput">
-      <div class="editor">
-        <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 :오른쪽을_가리키는_손_모양:</h6>
-        <a id="btn_editor" class="new_comment">
-          <i class="fa-regular fa-pen-to-square fa-4x"></i
-        ></a>
-      </div>
+  </div>
+  <div id="text_container" class="comment_box">
+    <!-- 이하 생략 -->
+  </div>
+  <div class="mycommentgbox" id="commentgbox">
+    <div class="form-floating">
+      <input type="name" class="form-control" id="inp_name" />
+      <label for="floatingInput">닉네임 :</label>
     </div>
-  </body>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="inp_txt" />
+      <label for="floatingInput">내용 : </label>
+    </div>
+    <div class="inputbtn">
+      <button id="sav" type="button" class="btn" style="background-color: #FFD5C2">
+        입력
+      </button>
+      <button type="button" id="cancell" class="btn" style="background-color: rgb(194, 191, 191)">
+        취소
+      </button>
+    </div>
+  </div>
+  <div class="commentinput">
+    <div class="editor">
+      <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 :오른쪽을_가리키는_손_모양:</h6>
+      <a id="btn_editor" class="new_comment">
+        <i class="fa-regular fa-pen-to-square fa-4x"></i></a>
+    </div>
+  </div>
+</body>
+
 </html>
