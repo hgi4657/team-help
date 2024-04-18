@@ -5,7 +5,6 @@ $("#btn_editor").click(async function () {
 });
 
 
-
 // 새로운 div를 생성
 const newComment = document.createElement('div');
 

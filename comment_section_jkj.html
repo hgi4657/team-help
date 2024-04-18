@@ -16,6 +16,41 @@
   <script src="https://kit.fontawesome.com/49be96d31f.js" crossorigin="anonymous"></script>
   
   <script src="./comment_section.js" defer></script>
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // Firebase 구성 정보 설정
+    const firebaseConfig = {
+        apiKey: "AIzaSyBCQnr4yIn-M8nJVTlLocbN8KIvFoMrzWQ",
+        authDomain: "team-help-783b6.firebaseapp.com",
+        projectId: "team-help-783b6",
+        storageBucket: "team-help-783b6.appspot.com",
+        messagingSenderId: "488622332237",
+        appId: "1:488622332237:web:0adf9af9c955e644263f04",
+        measurementId: "G-1KMBNSPH2M"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const name = document.getElementById('inp_name').value;
+    const text = document.getElementById('inp_txt').value;
+
+    $("#sav").click(async function () {
+    let doc = {
+      'name': name,
+      'text': text
+    };
+    await addDoc(collection(db, "comments"), doc);
+    })
+  </script>
 
 </head>
 
