@@ -1,4 +1,3 @@
-$("#commentgbox").hide();
 $("#btn_editor").click(async function () {
   $("#commentgbox").toggle();
 });

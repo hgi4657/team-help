@@ -15,11 +15,19 @@
   <!-- 아이콘 -->
   <script src="https://kit.fontawesome.com/49be96d31f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./stylesheet/nav.css" />
+
+
   <script type="module">
+
+    //취소 누르면 다시 comment 입력창 숨기기
+    $("#cancell").click(async function () {
+      $('.mycommentgbox').hide();
+    });
+
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import {collection,addDoc,setDoc,doc, updateDoc, query, where} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc, setDoc, doc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
@@ -76,19 +84,21 @@
       } else if (text == "") {
         alert("내용을 입력해주세요");
         return;
-      } else {
-        let check = confirm("등록하시겠습니까?");
       }
 
-      await setDoc(doc(db, "comments", "id" + date_id), {
-        name: name,
-        text: text,
-        backColor: backColor,
-        today: today,
-        date_id: date_id,
-      });
+      let check = confirm("등록하시겠습니까?");
+      if (check === true) {
 
-      location.reload();
+        await setDoc(doc(db, "comments", "id" + date_id), {
+          name: name,
+          text: text,
+          backColor: backColor,
+          today: today,
+          date_id: date_id,
+        });
+
+        location.reload();
+      }
     });
 
     let docs = await getDocs(collection(db, "comments"));
@@ -114,19 +124,22 @@
       $("#text_container").append(temp_html);
     });
 
-    //삭제
+    //코멘트 삭제버튼 클릭시
     $(document).on("click", ".del", async function () {
-      const commentID = $(this).closest(".box").attr("data-comment-id");
-      try {
-        await deleteDoc(doc(db, "comments", commentID));
-        $(this).closest(".box").remove();
-      } catch (error) {
-        console.error("Error deleting document: ", error);
+      let check = confirm("삭제하시겠습니까?");
+      if (check === true) {
+        const commentID = $(this).closest(".box").attr("data-comment-id");
+        try {
+          await deleteDoc(doc(db, "comments", commentID));
+          $(this).closest(".box").remove();
+        } catch (error) {
+          console.error("Error deleting document: ", error);
+        }
       }
     });
 
 
-    //수정
+    //코멘트 수정버튼 클릭시
     $(".ins").click(async function () {
 
       //id 가져오기
@@ -149,33 +162,33 @@
         old_text = el.data().text;
       });
 
-      var new_name = prompt("수정 할 닉네임", old_name);
-      var new_text = prompt("수정 할 텍스트", old_text);
-      
+      let new_name = prompt("수정 할 닉네임을 적어주세요.", old_name);
+      let new_text = prompt("수정 할 텍스트를 적어주세요.", old_text);
+
 
       if (new_name !== null && new_text) {
         //값 업데이트
         const docRef = doc(db, "comments", commentID);
-  
+
         // Set the "capital" field of the city 'DC'
         await updateDoc(docRef, {
           name: new_name,
           text: new_text
         });
-        
-        } else if (new_name !== null) {
-          const docRef = doc(db, "comments", commentID);
-          await updateDoc(docRef, {
-            name: new_name,
-            text: old_text
-          });
-        }else if (new_text !== null) {
-          const docRef = doc(db, "comments", commentID);
-          await updateDoc(docRef, {
-            name: old_name,
-            text: new_text
-          });
-        }
+
+      } else if (new_name !== null) {
+        const docRef = doc(db, "comments", commentID);
+        await updateDoc(docRef, {
+          name: new_name,
+          text: old_text
+        });
+      } else if (new_text !== null) {
+        const docRef = doc(db, "comments", commentID);
+        await updateDoc(docRef, {
+          name: old_name,
+          text: new_text
+        });
+      }
 
       location.reload();
 

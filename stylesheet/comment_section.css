@@ -35,6 +35,7 @@ body {
 }
 
 .mycommentgbox {
+  display: none;
   /* background-color: aqua; */
   width: 500px;
   margin: 10px 10px 10px auto;
