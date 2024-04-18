@@ -28,7 +28,7 @@ nav {
 #img {
     width: 100px;
     height: 100px;
-    margin-left: 280px;
+    margin-left: -35px;
     margin-top: 70px;
 }
 
@@ -81,6 +81,7 @@ nav {
     text-decoration: none; 
     color: black; 
     transition: color 0.3s; 
+    font-size: 17px;
 }
 
 #git a:hover {
