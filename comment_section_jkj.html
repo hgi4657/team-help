@@ -152,14 +152,30 @@
       var new_name = prompt("수정 할 닉네임", old_name);
       var new_text = prompt("수정 할 텍스트", old_text);
       
-      //값 업데이트
-      const docRef = doc(db, "comments", commentID);
 
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(docRef, {
-        name: new_name,
-        text: new_text
-      });
+      if (new_name !== null && new_text) {
+        //값 업데이트
+        const docRef = doc(db, "comments", commentID);
+  
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(docRef, {
+          name: new_name,
+          text: new_text
+        });
+        
+        } else if (new_name !== null) {
+          const docRef = doc(db, "comments", commentID);
+          await updateDoc(docRef, {
+            name: new_name,
+            text: old_text
+          });
+        }else if (new_text !== null) {
+          const docRef = doc(db, "comments", commentID);
+          await updateDoc(docRef, {
+            name: old_name,
+            text: new_text
+          });
+        }
 
       location.reload();
 
