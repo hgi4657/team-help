@@ -59,3 +59,7 @@ body {
 .index_image {
   cursor: pointer;
 }
+
+.index_image {
+  margin-bottom: 50px;
+}
