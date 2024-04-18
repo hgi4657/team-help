@@ -1,97 +1,96 @@
-
 * {
-    padding: 0;
-    margin: 0
+  padding: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    font-size: 15px
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "NanumSquareNeo-Variable";
+  padding: 3px;
+  font-size: 1.2em;
 }
 
 a:link {
-    color :#5776f1;
+  color: #5776f1;
 }
 
 a:visited {
-    color :#5776f1;
+  color: #5776f1;
 }
 
 nav {
-    width: 80%;
-    overflow: hidden;
-    height: 80px;
-    background-color: #5776f1;
-    margin: 50px auto
+  width: 80%;
+  overflow: hidden;
+  height: 80px;
+  background-color: #5776f1;
+  margin: 50px auto;
 }
-
-a+a{
-    margin-left: 20px;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumar+One&display=swap");
 
 @font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "NanumSquareNeo-Variable";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .page-header {
-    background-color: var(--bgcolor);
-    color: rgb(150, 168, 228);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 105px;
-    border-bottom: #7694e7 solid 1px;
+  background-color: var(--bgcolor);
+  color: rgb(150, 168, 228);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 105px;
+  border-bottom: #7694e7 solid 1px;
 }
 
 .nav {
-    margin-right: 30px;
-    display: flex;
-    width: 400px;
-    justify-content: space-evenly;
+  margin-right: 30px;
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
 }
 
-.nav>a {
-    color: rgb(150, 168, 228);
-    padding: 3px;
-    cursor: pointer;
-    font-family: 'NanumSquareNeo-Variable';
+.nav > a {
+  color: rgb(150, 168, 228);
+  padding: 3px;
+  cursor: pointer;
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 1.2em;
 }
 
-.nav>a:hover {
-    opacity: 0.8;
+.nav > a:hover {
+  opacity: 0.8;
 }
 
 .Logo {
-    color: rgb(99, 145, 230);
-    margin-top: 8px;
+  color: rgb(99, 145, 230);
+  margin-top: 8px;
 }
 
 .Logo a.active {
-    color: #7694e7;
-    font-family: 'Kumar One', cursive;
-    font-size: 25px;
-    margin-left: 35px;
+  color: #7694e7;
+  font-family: "Kumar One", cursive;
+  font-size: 25px;
+  margin-left: 35px;
 }
 
 .menu-icon {
-    color: white;
-    cursor: pointer;
-    display: none;
+  color: white;
+  cursor: pointer;
+  display: none;
 }
 
 #navigation-bar {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 #navigation-bar li {
-    margin-right: 20px;
+  margin-right: 50px;
 }
