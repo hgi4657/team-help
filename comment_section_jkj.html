@@ -43,47 +43,53 @@
       // Firebase 인스턴스 초기화
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-      let backColor
+      let backColor;
       let today = new Date();
 
-      $('#sav').click(async function () {
-       const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
-       backColor = color_list[Math.floor(Math.random() * color_list.length)];
+      $("#sav").click(async function () {
+        const color_list = [
+          "#8ABDD1",
+          "#8AD1CF",
+          "#8AA7D1",
+          "#EAEAEA",
+          "#FFD5C2",
+          "#FFCAC2",
+        ];
+        backColor = color_list[Math.floor(Math.random() * color_list.length)];
 
-       let name = $('#inp_name').val();
-       let text = $('#inp_txt').val();
-       const doc = await addDoc(collection(db, "comments"), {
-         'name': name,
-         'text': text,
-         'backColor':backColor,
-         'today':today
-         
-       });
+        let name = $("#inp_name").val();
+        let text = $("#inp_txt").val();
+        const doc = await addDoc(collection(db, "comments"), {
+          name: name,
+          text: text,
+          backColor: backColor,
+          today: today,
+        });
       });
 
       let docs = await getDocs(collection(db, "comments"));
 
       docs.forEach((doc) => {
-          let row = doc.data();
-          let name = row['name']
-          let text = row['text']
-          let backColor = row['backColor']
-          let today = row['today']
-          
+        let row = doc.data();
+        let name = row["name"];
+        let text = row["text"];
+        let backColor = row["backColor"];
+        let today = row["today"];
 
-          let temp_html = `<div class="box" style="background-color: ${backColor};">
-      <div class="nickname">${name}</div>
-      <div class="content">${text}</div>
-      <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
-      <div hidden>${today}</div>
-      </div>`;
-          $('#text_container').append(temp_html);
+        let temp_html = `<div class="box" style="background-color: ${backColor};">
+  <div class="nickname-btn-container">
+    <div class="nickname">${name}</div>
+    <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
+  </div>
+  <div class="content">${text}</div>
+  <div hidden>${today}</div>
+</div>`;
+        $("#text_container").append(temp_html);
       });
-
     </script>
-  <script src="./comment_section.js" defer></script>
-</head>
-  <body style="background-color: #EAEAEA">
+    <script src="./comment_section.js" defer></script>
+  </head>
+  <body style="background-color: #eaeaea">
     <div class="page-header">
       <a id="menu-icon" class="menu-icon">
         <i class="fa fa-bars"></i>
@@ -120,21 +126,15 @@
     </div>
     <div class="mycommentgbox" id="commentgbox">
       <div class="form-floating">
-        <input type="name" class="form-control" id="inp_name" />
+        <input type="name" class="form-control" id="inp_name" maxlength="10" />
         <label for="floatingInput">닉네임 :</label>
       </div>
       <div class="form-floating">
-        <input type="text" class="form-control" id="inp_txt" />
+        <input type="text" class="form-control" id="inp_txt" maxlength="50" />
         <label for="floatingInput">내용 : </label>
       </div>
       <div class="inputbtn">
-        <button
-          id="sav"
-          type="button"
-          class="btn"
-        >
-          입력
-        </button>
+        <button id="sav" type="button" class="btn">입력</button>
         <button
           type="button"
           id="cancell"
