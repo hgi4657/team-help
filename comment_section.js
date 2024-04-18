@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 })
-//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑구현완료↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
 // 입력 취소 버튼
 document.getElementById('cancell').addEventListener('click', () => {
     document.getElementById('inp_name').value = '';
