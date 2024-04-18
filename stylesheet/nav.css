@@ -94,3 +94,15 @@ nav {
 #navigation-bar li {
   margin-right: 50px;
 }
+
+#container {
+  display: flex;
+  align-items: center;
+}
+
+#left_btn {
+  margin-left: 0px; 
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
