@@ -4,6 +4,10 @@
     font-family: "Gowun Dodum", sans-serif;
 }
 
+body {
+    background-color: #EAEAEA;
+  }
+
 .title {
     font-weight: 700;
 }
