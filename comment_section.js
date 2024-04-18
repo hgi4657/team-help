@@ -29,7 +29,7 @@ function addComment(name, text) {
   </div>
   <div class="content">${text}</div>
   <div hidden>${today}</div>
-</div>`;;
+</div>`;
   // 새로 만든 div에 댓글 뼈대 넣기
   newComment.innerHTML = commentHtml;
   // 댓글 컨테이너에서 자식이 있으면 그 위에 올리기
