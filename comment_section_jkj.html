@@ -43,6 +43,7 @@
       // Firebase 인스턴스 초기화
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
+<<<<<<< HEAD
       let backColor
       let today = new Date();
 
@@ -74,6 +75,18 @@
           $('#text_container').append(temp_html);
       });
       
+=======
+
+      $("#sav").click(async function () {
+        let name = $('#inp_name').val();
+        let text = $('#inp_txt').val();
+        const doc = await addDoc(collection(db, "comments"), {
+          'name': name,
+          'text': text
+        });
+        window.location.reload()
+      })
+>>>>>>> parent of c421849 (fb 완료)
     </script>
   <script src="./comment_section.js" defer></script>
 </head>
@@ -126,7 +139,11 @@
           id="sav"
           type="button"
           class="btn"
+<<<<<<< HEAD
           style="background-color: #FFD5C2"
+=======
+          style="background-color: #ffd5c2"
+>>>>>>> parent of c421849 (fb 완료)
         >
           입력
         </button>
