@@ -60,7 +60,10 @@
         today: today
       });
 
-    let docs = await getDocs(collection(db, "comments"));
+      location.reload();
+  });
+
+  let docs = await getDocs(collection(db, "comments"));
     docs.forEach((doc) => {
       let row = doc.data();
       let name = row['name']
@@ -77,7 +80,6 @@
       $('#text_container').append(temp_html);
     });
 
-  });
   </script>
 
   <script src="./comment_section.js" defer></script>
@@ -108,7 +110,7 @@
   </div>
   <div class="titlebox">
     <div>
-      <h2 class="title">살려조 방명록:연필2:</h2>
+      <h2 class="title">살려조 방명록 ✏️</h2>
     </div>
     <div class="subtitle">
       <h4>반갑습니다 한마디씩 남겨주세요!</h4>
@@ -137,7 +139,7 @@
   </div>
   <div class="commentinput">
     <div class="editor">
-      <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 :오른쪽을_가리키는_손_모양:</h6>
+      <h6 style="margin-top: 40px">여기를 눌러 방명록을 작성하세요 👉</h6>
       <a id="btn_editor" class="new_comment">
         <i class="fa-regular fa-pen-to-square fa-4x"></i></a>
     </div>
