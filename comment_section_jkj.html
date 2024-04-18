@@ -16,7 +16,6 @@
   <script src="https://kit.fontawesome.com/49be96d31f.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="./stylesheet/nav.css">
-  <script src="./comment_section.js" defer></script>
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
@@ -41,22 +40,23 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const name = document.getElementById('inp_name').value;
-    const text = document.getElementById('inp_txt').value;
 
     $("#sav").click(async function () {
-    let doc = {
-      'name': name,
-      'text': text
-    };
-    await addDoc(collection(db, "comments"), doc);
+      let name = $('#inp_name').val();
+      let text = $('#inp_txt').val();
+
+      let doc = {
+        'name': name,
+        'text': text
+        };
+        await addDoc(collection(db, "comments"), doc);
+
+      window.location.reload()
     })
+
+    
   </script>
-  <style>
-    body {
-      background-color: #eaeaea;
-    }
-  </style>
+
 </head>
 
 <body>

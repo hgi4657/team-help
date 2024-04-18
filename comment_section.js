@@ -4,7 +4,6 @@ $("#btn_editor").click(async function () {
     $("#commentgbox").toggle();
 });
 
-
 // 새로운 div를 생성
 const newComment = document.createElement('div');
 
@@ -61,60 +60,6 @@ function delComment() {
         })
     })
 }
-
-// 수정 버튼 기능 (미구현)
-// function corComment() {
-//     const cors = document.querySelectorAll('.cor')
-
-//     cors.forEach(function(cor) {
-//         cor.addEventListener('click', () => {
-//             const commentBox = cor.closest('.text_box')
-
-//             // 수정 버튼이 현재 편집 중인지 확인
-//             const isEditing = commentBox.classList.contains('editing');
-
-//             if (!isEditing) {
-//                 // 수정 중 상태로 변경
-//                 commentBox.classList.add('editing');
-
-//                 // 댓글 내용을 input 상자로 변경
-//                 const textDiv = commentBox.querySelector('.text_txt');
-//                 const textContent = textDiv.textContent;
-//                 textDiv.innerHTML = `<input type="text" class="edit_text_input" value="${textContent}">`;
-
-//                 // 수정 완료를 처리하는 함수
-//                 function handleEditCompletion() {
-//                     // 수정 내용 가져오기
-//                     const updatedText = inputField.value;
-
-//                     // 댓글 내용을 수정된 내용으로 업데이트
-//                     textDiv.textContent = updatedText;
-
-//                     // 수정 완료 상태로 변경
-//                     commentBox.classList.remove('editing');
-
-//                     // 이벤트 리스너 제거
-//                     inputField.removeEventListener('blur', handleEditCompletion);
-//                 }
-
-//                 // 수정 버튼 텍스트 변경
-//                 editButton.textContent = '수정 완료';
-
-//                 // 수정 완료 처리를 위한 이벤트 리스너 추가
-//                 const inputField = commentBox.querySelector('.edit_text_input');
-//                 inputField.addEventListener('blur', handleEditCompletion);
-//             } else {
-//                 // 수정 완료 상태일 때, 수정 버튼 텍스트를 다시 원래대로 변경
-//                 editButton.textContent = '수정';
-
-//                 // 수정 완료 상태로 변경
-//                 commentBox.classList.remove('editing');
-//             }
-//         });
-//     });
-// }
-
-
 
 // 등록 버튼 클릭 시 실행
 document.addEventListener('DOMContentLoaded', function () {
