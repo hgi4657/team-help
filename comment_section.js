@@ -22,14 +22,14 @@ function addComment(name, text) {
   // 랜덤배경저장
   const backColor = randomColor();
   // 댓글 뻐대
-  const commentHtml = `<div class="box" style="background-color: ${backColor};">
-        <div class="nickname-btn-container">
-          <div class="nickname">${name}</div>
-          <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);"삭제/button>
-        </div>
-        <div class="content">${text}</div>
-        <div hidden>${today}</div>
-      </div>`;
+  const commentHtml = `<div class="box" data-comment-id=${doc.id} style="background-color: ${backColor};">
+  <div class="nickname-btn-container">
+    <div class="nickname">${name}</div>
+    <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
+  </div>
+  <div class="content">${text}</div>
+  <div hidden>${today}</div>
+</div>`;;
   // 새로 만든 div에 댓글 뼈대 넣기
   newComment.innerHTML = commentHtml;
   // 댓글 컨테이너에서 자식이 있으면 그 위에 올리기

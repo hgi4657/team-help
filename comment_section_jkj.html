@@ -32,6 +32,9 @@
         doc,
       } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
       import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+      
       // Firebase 구성 정보 설정
       const firebaseConfig = {
         apiKey: "AIzaSyBCQnr4yIn-M8nJVTlLocbN8KIvFoMrzWQ",
@@ -79,6 +82,7 @@
           text: text,
           backColor: backColor,
           today: today,
+          date_id: date_id
         });
 
         location.reload();
@@ -91,7 +95,8 @@
         let text = row["text"];
         let backColor = row["backColor"];
         let today = row["today"];
-        let temp_html = `<div class="box" style="background-color: ${backColor};">
+        let date_id = row["date_id"]
+        let temp_html = `<div class="box" data-comment-id=${doc.id} style="background-color: ${backColor};">
         <div class="nickname-btn-container">
           <div class="nickname">${name}</div>
           <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
@@ -102,6 +107,16 @@
 
         $("#text_container").append(temp_html);
       });
+
+      $(document).on("click", ".del", async function () {
+      const commentID = $(this).closest(".box").attr("data-comment-id");
+      try {
+        await deleteDoc(doc(db, "comments", commentID));
+        $(this).closest(".box").remove();
+      } catch (error) {
+        console.error("Error deleting document: ", error);
+      }
+    })
     </script>
 
     <script src="./comment_section.js" defer></script>
@@ -138,29 +153,34 @@
       <div class="subtitle">
         <h4>반갑습니다 한마디씩 남겨주세요!</h4>
       </div>
-    </div>
-    <div id="text_container" class="comment_box">
-      <!-- 이하 생략 -->
-    </div>
-    <div class="mycommentgbox" id="commentgbox">
-      <div class="form-floating">
-        <input type="name" class="form-control" id="inp_name" maxlength="10" />
-        <label for="floatingInput">닉네임 :</label>
+      <div class="mycommentgbox" id="commentgbox">
+        <div class="form-floating">
+          <input
+            type="name"
+            class="form-control"
+            id="inp_name"
+            maxlength="10"
+          />
+          <label for="floatingInput">닉네임 :</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="inp_txt" maxlength="50" />
+          <label for="floatingInput">내용 : </label>
+        </div>
+        <div class="inputbtn">
+          <button id="sav" type="button" class="btn">입력</button>
+          <button
+            type="button"
+            id="cancell"
+            class="btn"
+            style="background-color: rgb(194, 191, 191)"
+          >
+            취소
+          </button>
+        </div>
       </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="inp_txt" maxlength="50" />
-        <label for="floatingInput">내용 : </label>
-      </div>
-      <div class="inputbtn">
-        <button id="sav" type="button" class="btn">입력</button>
-        <button
-          type="button"
-          id="cancell"
-          class="btn"
-          style="background-color: rgb(194, 191, 191)"
-        >
-          취소
-        </button>
+      <div id="text_container" class="comment_box">
+        <!-- 이하 생략 -->
       </div>
     </div>
     <div class="commentinput">
