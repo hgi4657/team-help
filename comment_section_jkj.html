@@ -40,22 +40,19 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-
     $("#sav").click(async function () {
       let name = $('#inp_name').val();
       let text = $('#inp_txt').val();
-
-      let doc = {
+      const doc = await addDoc(collection(db, "comments"), {
         'name': name,
         'text': text
-        };
-        await addDoc(collection(db, "comments"), doc);
-
+      });
       window.location.reload()
     })
-
-    
   </script>
+
+  
+  <script src="./comment_section.js" defer></script>
 
 </head>
 

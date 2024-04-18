@@ -68,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // 입력 값 가져오기
         const name = document.getElementById('inp_name').value;
         const text = document.getElementById('inp_txt').value;
-        console.log(name)
-        console.log(text)
 
         // 내용 입력 확인
         if (name == '' && text == '') {
@@ -83,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (check === true) {
                 // 댓글을 컨테이너에 추가
                 addComment(name, text);
+                writeData(name, text)
 
                 // 입력 필드 지우기
                 document.getElementById('inp_name').value = '';
@@ -91,8 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 // 삭제 버튼 기능 호출
                 delComment()
 
-                // 수정 버튼 기능 호출(미구현)
-                // corComment()
             } else {
                 return
             }
