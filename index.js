@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// // 팀 소개 페이지 이동
-// document.addEventListener("DOMContentLoaded", function() {
-//     const team_img = document.getElementById('team_box')
-//     team_img.addEventListener("click", function() {
-//         // location.href = "suyeon.html" >>> 팀소개 html로 변경
-//     })
-// })
+// 팀 소개 페이지 이동
+document.addEventListener("DOMContentLoaded", function() {
+    const team_img = document.getElementById('team_box')
+    team_img.addEventListener("click", function() {
+        location.href = "team_section.html"
+    })
+})
