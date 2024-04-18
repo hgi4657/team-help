@@ -12,7 +12,7 @@ function randomColor() {
     const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
     return color_list[Math.floor(Math.random() * color_list.length)];
 }
-
+let today = new Date();
 // 새 댓글 등록 함수
 function addComment(name, text) {
     // 랜덤배경저장
@@ -24,7 +24,8 @@ function addComment(name, text) {
       <div class="nickname">${name}</div>
       <div class="content">${text}</div>
       <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
-    </div>`;
+      <div hidden>${today}</div>
+      </div>`;
 
     // 새로 만든 div에 댓글 뼈대 넣기
     newComment.innerHTML = commentHtml

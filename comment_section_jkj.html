@@ -47,6 +47,10 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       let backColor
+      let today = new Date();
+
+
+
       $('#sav').click(async function () {
        const color_list = ['#8ABDD1', '#8AD1CF', '#8AA7D1', '#EAEAEA', '#FFD5C2', '#FFCAC2'];
        backColor = color_list[Math.floor(Math.random() * color_list.length)];
@@ -56,7 +60,9 @@
        const doc = await addDoc(collection(db, "comments"), {
          'name': name,
          'text': text,
-         'backColor':backColor
+         'backColor':backColor,
+         'today':today
+         
        });
       });
 
@@ -67,14 +73,15 @@
           let name = row['name']
           let text = row['text']
           let backColor = row['backColor']
-          console.log(name)
-          console.log(text)
+          let today = row['today']
+          
 
           let temp_html = `<div class="box" style="background-color: ${backColor};">
       <div class="nickname">${name}</div>
       <div class="content">${text}</div>
       <button type="button" class="btn UDbtn del" style="background-color: rgb(221, 221, 221);">삭제</button>
-    </div>`;
+      <div hidden>${today}</div>
+      </div>`;
           $('#text_container').append(temp_html);
       });
 
