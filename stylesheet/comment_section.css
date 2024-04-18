@@ -90,3 +90,11 @@ button+button {
 .content {
     margin: auto 10px 10px 10px;
 }
+
+.new_comment {
+    cursor: pointer;
+    color: black;
+}
+.new_comment:hover{
+    color: black;
+}
