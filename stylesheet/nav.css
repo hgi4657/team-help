@@ -24,6 +24,11 @@ nav {
     background-color: #5776f1;
     margin: 50px auto
 }
+
+a+a{
+    margin-left: 20px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
 
 @font-face {
@@ -88,5 +93,5 @@ nav {
 }
 
 #navigation-bar li {
-    margin-right: 50px;
+    margin-right: 20px;
 }
