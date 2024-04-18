@@ -4,6 +4,10 @@
   font-family: "Gowun Dodum", sans-serif;
 }
 
+body {
+  background-color: #EAEAEA;
+}
+
 .card_container {
   margin: 10px auto;
   width: 90%;
