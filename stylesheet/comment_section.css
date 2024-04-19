@@ -96,11 +96,6 @@ button + button {
   align-items: center;
 }
 
-.btns. btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
- }
  .btns .btn {
   margin-right: 0;
 }
