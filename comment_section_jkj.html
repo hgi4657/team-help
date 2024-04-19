@@ -154,8 +154,6 @@
         truepassword= el.data().password;
       });
 
-      console.log(truepassword)
-
       if(password != truepassword) {
         alert("비밀번호가 다릅니다 !");
         return;
@@ -198,8 +196,6 @@
         truepassword= el.data().password;
       });
 
-      console.log(truepassword)
-
       if(password != truepassword) {
         alert("비밀번호가 다릅니다 !");
         return;
@@ -216,7 +212,6 @@
       let old_name;
 
       querySnapshot2.forEach((el) => {
-        console.log(el.id, " => ", el.data())
         old_name = el.data().name;
         old_text = el.data().text;
       });
