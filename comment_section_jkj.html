@@ -69,6 +69,7 @@
         "#FFD5C2",
         "#FFCAC2",
       ];
+
       backColor = color_list[Math.floor(Math.random() * color_list.length)];
       let name = $("#inp_name").val();
       let text = $("#inp_txt").val();
@@ -86,18 +87,23 @@
       }
 
       let check = confirm("등록하시겠습니까?");
-      if (check === true) {
-
-        await setDoc(doc(db, "comments", "id" + date_id), {
-          name: name,
-          text: text,
-          backColor: backColor,
-          today: today,
-          date_id: date_id,
-        });
-
-        location.reload();
+      if (check === false) {
+        return;
       }
+
+      let password = prompt("비밀번호를 적어주세요.");
+
+      await setDoc(doc(db, "comments", "id" + date_id), {
+        name: name,
+        text: text,
+        backColor: backColor,
+        today: today,
+        date_id: date_id,
+        password: password
+      });
+
+      location.reload();
+
     });
 
     let docs = await getDocs(collection(db, "comments"));
@@ -125,9 +131,38 @@
 
     //코멘트 삭제버튼 클릭시
     $(document).on("click", ".del", async function () {
+
+      //id 가져오기
+      let commentID = $(this).closest(".box").attr("data-comment-id");
+
+      let password = prompt("비밀번호를 적어주세요.");
+
+      if(password == null) {
+        return;
+      }
+
+      let truepassword;
+
+      //DB에서 id 값에 맞는 특정 데이터 가져오기
+      const q = query(
+        collection(db, "comments"),
+        where('date_id', '==', commentID.substring(2))
+      );
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((el) => {
+        truepassword= el.data().password;
+      });
+
+      console.log(truepassword)
+
+      if(password != truepassword) {
+        alert("비밀번호가 다릅니다 !");
+        return;
+      }
+
       let check = confirm("삭제하시겠습니까?");
       if (check === true) {
-        const commentID = $(this).closest(".box").attr("data-comment-id");
         try {
           await deleteDoc(doc(db, "comments", commentID));
           $(this).closest(".box").remove();
@@ -144,18 +179,43 @@
       //id 가져오기
       let commentID = $(this).closest(".box").attr("data-comment-id");
 
-      console.log(commentID)
+      let password = prompt("비밀번호를 적어주세요.");
+      
+      if(password == null) {
+        return;
+      }
+
+      let truepassword;
+
       //DB에서 id 값에 맞는 특정 데이터 가져오기
-      const q = query(
+      const q1 = query(
         collection(db, "comments"),
         where('date_id', '==', commentID.substring(2))
       );
-      const querySnapshot = await getDocs(q);
+      const querySnapshot1 = await getDocs(q1);
+
+      querySnapshot1.forEach((el) => {
+        truepassword= el.data().password;
+      });
+
+      console.log(truepassword)
+
+      if(password != truepassword) {
+        alert("비밀번호가 다릅니다 !");
+        return;
+      }
+
+      //DB에서 id 값에 맞는 특정 데이터 가져오기
+      const q2 = query(
+        collection(db, "comments"),
+        where('date_id', '==', commentID.substring(2))
+      );
+      const querySnapshot2 = await getDocs(q2);
 
       let old_text;
       let old_name;
 
-      querySnapshot.forEach((el) => {
+      querySnapshot2.forEach((el) => {
         console.log(el.id, " => ", el.data())
         old_name = el.data().name;
         old_text = el.data().text;
