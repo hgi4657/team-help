@@ -93,11 +93,17 @@
 
       let password = prompt("비밀번호를 적어주세요.");
 
+      //취소 버튼 눌렀을 때
       if(password == null) {
         return;
       }
       
-      await setDoc(doc(db, "comments", "id" + date_id), {
+      //비밀번호 안 입력 했을 때
+      if(password == '') {
+        alert("비밀번호를 입력해주세요 !")
+      }else { //비밀번호 입력 되었을 때 저장
+
+        await setDoc(doc(db, "comments", "id" + date_id), {
         name: name,
         text: text,
         backColor: backColor,
@@ -107,6 +113,9 @@
       });
 
       location.reload();
+
+      }
+
 
     });
 
