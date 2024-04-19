@@ -93,6 +93,10 @@
 
       let password = prompt("비밀번호를 적어주세요.");
 
+      if(password == null) {
+        return;
+      }
+      
       await setDoc(doc(db, "comments", "id" + date_id), {
         name: name,
         text: text,
