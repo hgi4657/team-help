@@ -126,3 +126,11 @@ button + button {
 .new_comment:hover {
   color: black;
 }
+
+#sav {
+  background-color: #ffd5c2;
+}
+
+#cancell {
+  background-color: rgb(194, 191, 191);
+}
